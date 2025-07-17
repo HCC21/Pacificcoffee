@@ -74,15 +74,23 @@
 </head>
 <body>
 <script>
-  const password = "PacificCoffee2024"; // ✅ 請自行修改密碼
-
-  let userInput = prompt("請輸入密碼進入每日通道：");
-
-  if (userInput !== password) {
-    alert("密碼錯誤，無法進入！");
-    document.body.innerHTML = "<h1 style='margin-top:50px;'>🚫 存取被拒</h1><p>請重新輸入正確密碼以進入網頁。</p>";
+  const correctPassword = "pacific2025"; // ✅ 自訂密碼
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    if (input === correctPassword) {
+      document.getElementById("lockScreen").style.display = "none";
+      document.body.style.overflow = "auto"; // 恢復捲動
+    } else {
+      alert("密碼錯誤，請再試一次");
+    }
   }
 </script>
+
+<div id="lockScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;text-align:center;padding-top:20vh;">
+  <h2>請輸入密碼以進入</h2>
+  <input type="password" id="passwordInput" style="padding:10px;font-size:1em;">
+  <button onclick="checkPassword()" style="padding:10px 20px;margin-left:10px;">確認</button>
+</div>
 
   <h1>太平洋咖啡 每日通道</h1>
   <p id="dateTime"></p>
